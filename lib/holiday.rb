@@ -85,7 +85,7 @@ def all_supplies_in_holidays(holiday_hash)
     else
       season.capitalize!
     end
-    season << ": \n"
+    season << ":\n"
     output_text += season
     keys = holiday.keys
     holiday.each do |holiday_key, supplies|
