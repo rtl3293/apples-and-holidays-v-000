@@ -95,7 +95,7 @@ def all_supplies_in_holidays(holiday_hash)
         holiday_key_each do |word|
           word.capitalize!
         end
-        holiday_key.join(" ")
+        holiday_key.join("_")
         holiday_key << ": "
         output_text += "  " + holiday_key.chomp
       else
