@@ -87,7 +87,6 @@ def all_supplies_in_holidays(holiday_hash)
         split_holiday.each do |day|
           day.capitalize!
         end
-        split_holiday.capitalize!
         holiday_key = split_holiday.join(" ")
         holiday_key << ": "
         output_text += "  " + holiday_key.chomp
