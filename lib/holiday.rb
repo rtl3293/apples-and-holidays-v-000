@@ -97,7 +97,7 @@ def all_supplies_in_holidays(holiday_hash)
         end
         holiday_key.join(" ")
         holiday_key << ": "
-        output_text += holiday_key
+        output_text += "  " + holiday_key
       else
         holiday_key.capitalize!
         holiday_key << ": "
