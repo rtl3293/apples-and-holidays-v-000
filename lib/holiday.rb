@@ -84,6 +84,9 @@ def all_supplies_in_holidays(holiday_hash)
       holiday_key = holiday_key.to_s
       if holiday_key.include?("_")
         split_holiday = holiday_key.split("_")
+        split_holiday.each do |day|
+          day.capitalize!
+        end
         split_holiday.capitalize!
         holiday_key = split_holiday.join(" ")
         holiday_key << ": "
