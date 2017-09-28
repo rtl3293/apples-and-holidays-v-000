@@ -109,7 +109,7 @@ def all_supplies_in_holidays(holiday_hash)
           output_text += supply
         end
         if keys.last == holiday_key
-          output_text += " \n "
+          output_text += " \n"
         else
           output_text += " \n"
         end
