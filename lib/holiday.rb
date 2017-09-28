@@ -85,7 +85,6 @@ def all_supplies_in_holidays(holiday_hash)
       if holiday_key.include?("_")
         holiday_key.split("_")
         holiday_key.capitalize!
-        end
         holiday_key.join(" ")
         holiday_key << ": "
         output_text += "  " + holiday_key.chomp
