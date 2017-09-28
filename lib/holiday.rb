@@ -88,8 +88,8 @@ def all_supplies_in_holidays(holiday_hash)
     season << ": \n "
     output_text += season
     keys = holiday.keys
-    holiday.each do |holiday_name, supplies|
-      holiday_key = holiday_name.to_s
+    holiday.each do |holiday_key, supplies|
+      holiday_key = holiday_key.to_s
       if holiday_key.include?(" ")
         holiday_key.split
         holiday_key_each do |word|
@@ -108,13 +108,13 @@ def all_supplies_in_holidays(holiday_hash)
         supplies.each do |supply|
           output_text += supply
         end
-        if keys.last == holiday_name
+        if keys.last == holiday_key
           output_text += " \n "
         else
           output_text += " \n"
         end
       else
-        output_text += supplies[0]
+        output_text += supplies[0] + " \n "
       end
     end
   end
