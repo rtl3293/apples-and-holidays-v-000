@@ -100,7 +100,7 @@ def all_supplies_in_holidays(holiday_hash)
         output_text += "  " + holiday_key.chomp
       else
         holiday_key.capitalize!
-        holiday_key << ": "
+        holiday_key << ":"
         output_text += "  " + holiday_key.chomp
       end
       if supplies.length > 1
