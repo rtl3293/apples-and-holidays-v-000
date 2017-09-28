@@ -1,5 +1,19 @@
 require 'pry'
-
+holiday_hash = {
+  :winter => {
+    :christmas => ["Lights", "Wreath"],
+    :new_years => ["Party Hats"]
+  },
+  :summer => {
+    :fourth_of_july => ["Fireworks", "BBQ"]
+  },
+  :fall => {
+    :thanksgiving => ["Turkey"]
+  },
+  :spring => {
+    :memorial_day => ["BBQ"]
+  }
+}
 def second_supply_for_fourth_of_july(holiday_hash)
   # given that holiday_hash looks like this:
   # {
@@ -17,6 +31,7 @@ def second_supply_for_fourth_of_july(holiday_hash)
   #     :memorial_day => ["BBQ"]
   #   }
   # }
+  holiday_hash[:summer][:fourth_of_july][1]
   # return the second element in the 4th of July array
 end
 
@@ -24,28 +39,34 @@ def add_supply_to_winter_holidays(holiday_hash, supply)
   # holiday_hash is identical to the one above
   # add the second argument, which is a supply, to BOTH the
   # Christmas AND the New Year's arrays
-
+  holiday_hash[:winter].each do |holiday, supplies|
+    supplies << supply
+  end
 end
 
 
 def add_supply_to_memorial_day(holiday_hash, supply)
   # again, holiday_hash is the same as the ones above
   # add the second argument to the memorial day array
-
+  holiday_hash[:spring].each do |holiday, supplies|
+    supplies << supply
+  end
 end
 
 def add_new_holiday_with_supplies(holiday_hash, season, holiday_name, supply_array)
   # code here
   # remember to return the updated hash
-
+  holiday_hash[season][holiday_name] = supply_array
+  holiday_hash
 end
 
 def all_winter_holiday_supplies(holiday_hash)
   # return an array of all of the supplies that are used in the winter season
-
+  holiday_hash[:winter].values.flatten
 end
 
 def all_supplies_in_holidays(holiday_hash)
+  output_text = ""
   # iterate through holiday_hash and print items such that your readout resembles:
   # Winter:
   #   Christmas: Lights, Wreath
@@ -53,7 +74,50 @@ def all_supplies_in_holidays(holiday_hash)
   # Summer:
   #   Fourth Of July: Fireworks, BBQ
   # etc.
-
+  holiday_hash.each do |season, holiday|
+    season = season.to_s
+    if season.include?(" ")
+      season.split
+      season.each do |word|
+        word.capitalize!
+      end
+      season.join(" ")
+    else
+      season.capitalize!
+    end
+    season << ": \n "
+    output_text += season
+    keys = holiday.keys
+    holiday.each do |holiday_name, supplies|
+      holiday_key = holiday_name.to_s
+      if holiday_key.include?(" ")
+        holiday_key.split
+        holiday_key_each do |word|
+          word.capitalize!
+        end
+        holiday_key.join(" ")
+        holiday_key << ": "
+        output_text += holiday_key
+      else
+        holiday_key.capitalize!
+        holiday_key << ": "
+        output_text += holiday_key
+      end
+      if supplies.length > 1
+        supplies[1].prepend(", ")
+        supplies.each do |supply|
+          output_text += supply
+        end
+        if keys.last == holiday_name
+          output_text += " \n "
+        else
+          output_text += " \n"
+        end
+      else
+        output_text += supplies[0]
+    end
+  end
+  puts output_text
 end
 
 def all_holidays_with_bbq(holiday_hash)
@@ -63,8 +127,4 @@ def all_holidays_with_bbq(holiday_hash)
 end
 
 
-
-
-
-
-
+all_supplies_in_holidays(holiday_hash)
