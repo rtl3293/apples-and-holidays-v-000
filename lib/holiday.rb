@@ -114,7 +114,7 @@ def all_supplies_in_holidays(holiday_hash)
           output_text += "\n"
         end
       else
-        output_text += supplies[0] + " \n "
+        output_text += supplies[0] + "\n "
       end
     end
   end
